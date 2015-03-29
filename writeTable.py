@@ -37,16 +37,17 @@ def p7table_ELobjs(GiGzcatfile, tablename='p7table_ELobjs.tex', includeallcol=Fa
         for col in colarr: coldic[col] = col.replace('_','')
     else:
         coldic['ID']                = 'ID$_\\textrm{GLASS}$'
+        coldic['IDarc']             = 'ID$_\\textrm{arc}$'
         coldic['RA']                = 'R.A.'
         coldic['Dec']               = 'Dec.'
-        coldic['PA1']               = 'P.A.'
         coldic['F140Wmag']          = 'F140W'
         coldic['zphoto']            = '$z_\\textrm{photo}$'
         coldic['zspec']             = '$z_\\textrm{spec}$'
         coldic['zspecQ']            = 'Quality'
+        coldic['PA1']               = 'P.A.'
         coldic['NlinesmatchPA1']    = 'Nlines'
         coldic['linesmatchPA1str']  = 'line names'
-        coldic['EWPA1']             = 'EW limit [\\AA]'
+        # coldic['EWPA1']             = 'EW limit [\\AA]'
         coldic['flinePA1']          = '$f_\\textrm{line}$'
         coldic['mu']                = '$\\mu$'
 
@@ -60,8 +61,10 @@ def p7table_ELobjs(GiGzcatfile, tablename='p7table_ELobjs.tex', includeallcol=Fa
     header = """
 % = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 % Include this table with \input{filename.tex}
-% To rotate in emulateapj do: \\begin{turnpage}\input{filename.tex}\end{turnpage}
-% To display it on multiple pages do: \LongTables\input{filename.tex}
+% To rotate in emulateapj, do: \\begin{turnpage}\input{filename.tex}\end{turnpage}
+% To display it on multiple pages, do: \LongTables\input{filename.tex}
+% To display it sideways on multiple pages, do: \usepackage{longtable} in front and
+% \clearpage\LongTables\\begin{landscape}\input{filename.tex}\clearpage\end{landscape} when calling it
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \\tabletypesize{\\tiny} \\tabcolsep=0.11cm
 \\begin{deluxetable*}{"""+('c'*Ncol)+'} \\tablecolumns{'+str(Ncol)+'}'+"""
@@ -144,7 +147,7 @@ def p7table_ELobjs(GiGzcatfile, tablename='p7table_ELobjs.tex', includeallcol=Fa
 \enddata
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \\tablecomments{"""+footercomments+"""}
-\label{tab:dropouts}
+\label{tab:?}
 \end{deluxetable*}
 % = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
     """
